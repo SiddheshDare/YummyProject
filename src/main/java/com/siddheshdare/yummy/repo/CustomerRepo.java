@@ -1,6 +1,7 @@
 package com.siddheshdare.yummy.repo;
 
 import com.siddheshdare.yummy.entity.Customer;
+import com.siddheshdare.yummy.entity.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
