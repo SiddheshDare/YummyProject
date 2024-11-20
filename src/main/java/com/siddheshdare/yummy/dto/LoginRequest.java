@@ -1,15 +1,19 @@
 package com.siddheshdare.yummy.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.*;
 
-@Data
-public class LoginRequest {
-    @Email(message = "Please provide a valid email address")
-    @NotBlank(message = "Email is required")
-    private String email;
+public record LoginRequest(
+        @NotNull(message = "Email is required")
+        @Email(message = "Email must be in correct format")
+        @JsonProperty("email")
+        String email,
 
-    @NotBlank(message = "Password is required")
-    private String password;
+        @NotNull(message = "Password is required")
+        @NotEmpty(message = "Password is required")
+        @NotBlank(message = "Password is required")
+        @Size(min = 6, max = 12)
+        @JsonProperty("password")
+        String password
+) {
 }
